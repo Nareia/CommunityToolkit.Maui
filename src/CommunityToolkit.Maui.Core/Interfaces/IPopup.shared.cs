@@ -12,6 +12,11 @@ public interface IPopup : IElement, IVisualTreeElement, IAsynchronousHandler
 	/// Gets the View that Popup will be anchored.
 	/// </summary>
 	IView? Anchor { get; }
+	
+	/// <summary>
+	/// Gets the OffSet position of the View that Popup will be anchored.
+	/// </summary>
+	Point? AnchorOffSet { get; }
 
 	/// <summary>
 	/// Gets the Popup's color.

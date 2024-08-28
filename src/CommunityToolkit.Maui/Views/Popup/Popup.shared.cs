@@ -184,6 +184,15 @@ public partial class Popup : Element, IPopup, IWindowController, IPropertyPropag
 	public View? Anchor { get; set; }
 
 	/// <summary>
+	/// Gets or sets the <see cref="Point"/> offset anchor.
+	/// </summary>
+	/// <remarks>
+	/// The Anchor is where the Popup will render closest to. When an Anchor is configured
+	/// the popup will appear centered over that control modified by setted offset or as close as possible.
+	/// </remarks>
+	public Point? AnchorOffSet { get; set; }
+	
+	/// <summary>
 	/// Property that represents the Window that's showing the Popup.
 	/// </summary>
 	public Window Window
@@ -244,6 +253,8 @@ public partial class Popup : Element, IPopup, IWindowController, IPropertyPropag
 
 	/// <inheritdoc/>
 	IView? IPopup.Anchor => Anchor;
+	
+	Point? IPopup.AnchorOffSet => AnchorOffSet;
 
 	/// <inheritdoc/>
 	IView? IPopup.Content => Content;
@@ -253,7 +264,7 @@ public partial class Popup : Element, IPopup, IWindowController, IPropertyPropag
 
 	/// <inheritdoc/>
 	bool IResourcesProvider.IsResourcesCreated => resources is not null;
-
+	
 	/// <summary>
 	/// Resets the Popup.
 	/// </summary>

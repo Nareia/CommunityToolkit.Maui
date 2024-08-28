@@ -214,7 +214,15 @@ public static class PopupExtensions
 		{
 			var view = popup.Anchor.ToPlatform(popup.Handler?.MauiContext ?? throw new InvalidOperationException($"{nameof(popup.Handler.MauiContext)} Cannot Be Null"));
 			mauiPopup.PopoverPresentationController.SourceView = view;
-			mauiPopup.PopoverPresentationController.SourceRect = view.Bounds;
+			
+			if (popup.AnchorOffSet != null)
+			{
+				mauiPopup.PopoverPresentationController.SourceRect = new CGRect(popup.AnchorOffSet.Value.X, popup.AnchorOffSet.Value.Y, view.Bounds.Width, view.Bounds.Height);
+			}
+			else
+			{
+				mauiPopup.PopoverPresentationController.SourceRect = view.Bounds;
+			}
 		}
 	}
 

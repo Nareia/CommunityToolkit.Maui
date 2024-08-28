@@ -63,7 +63,25 @@ public static class PopupExtensions
 
 			var newX = locationOnScreen[0] - navigationBarHeight + (anchorView.Width / 2) - (popupWidth == null ? (window.DecorView.Width / 2) : (int)(popupWidth / 2));
 			var newY = locationOnScreen[1] - statusBarHeight + (anchorView.Height / 2) - (popupHeight == null ? (window.DecorView.Height / 2) : (int)(popupHeight / 2));
+			
+			if (popup.AnchorOffSet != null)
+			{
+				var anchorCenterX = locationOnScreen[0] + (anchorView.Width / 2);
+				var anchorCenterY = locationOnScreen[1] + (anchorView.Height / 2);
 
+				if (popupWidth != null && anchorCenterX > windowSize.Width - (popupWidth / 2))
+				{
+					newX = (int)(windowSize.Width - popupWidth);
+				}
+				if (popupHeight != null && anchorCenterY > windowSize.Height - (popupHeight / 2))
+				{
+					newY = (int)(windowSize.Height - popupHeight);
+				}
+
+				newX += (int)(popup.AnchorOffSet.Value.X * windowManager.CurrentWindowMetrics.Density);
+				newY += (int)(popup.AnchorOffSet.Value.Y * windowManager.CurrentWindowMetrics.Density);
+			}
+			
 			if (!(newX == attribute.X &&
 				  newY == attribute.Y))
 			{

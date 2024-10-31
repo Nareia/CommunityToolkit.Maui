@@ -78,8 +78,10 @@ public static class PopupExtensions
 					newY = (int)(windowSize.Height - popupHeight);
 				}
 
-				newX += (int)(popup.AnchorOffSet.Value.X * windowManager.CurrentWindowMetrics.Density);
-				newY += (int)(popup.AnchorOffSet.Value.Y * windowManager.CurrentWindowMetrics.Density);
+				float density = dialog.Context?.Resources?.DisplayMetrics?.Density ?? 1;
+
+				newX += (int)(popup.AnchorOffSet.Value.X * density);
+				newY += (int)(popup.AnchorOffSet.Value.Y * density);
 			}
 			
 			if (!(newX == attribute.X &&

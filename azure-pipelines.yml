@@ -60,7 +60,7 @@ jobs:
         'Windows':
           image: 'windows-latest'
         'macOS':
-          image: 'macos-14'
+          image: 'macos-15'
     pool:
       vmImage: $(image)
     steps:
@@ -138,7 +138,7 @@ jobs:
         'Windows':
           image: 'windows-latest'
         'macOS':
-          image: 'macos-14'
+          image: 'macos-15'
     pool:
       vmImage: $(image)
     steps:
